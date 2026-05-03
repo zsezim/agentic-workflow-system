@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+
+# Virtual env
+venv/
+.env/
+
+# Mac
+.DS_Store
+
+# Data / models
+data/
+*.csv
+*.tsv
+*.parquet
+*.pkl
+
+# Logs
+*.log
