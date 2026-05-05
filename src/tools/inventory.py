@@ -5,15 +5,26 @@ INVENTORY = {
     "walnut": 12,
 }
 
-
 def check_inventory(material: str, quantity: int):
     available = INVENTORY.get(material.lower(), 0)
     reorder_required = available < quantity
+
+    status = "low_inventory" if reorder_required else "available"
+
+    if reorder_required:
+        reason = (
+            f"Available inventory ({available}) is less than required quantity ({quantity})."
+        )
+    else:
+        reason = (
+            f"Available inventory ({available}) is sufficient for required quantity ({quantity})."
+        )
 
     return {
         "material": material,
         "required_quantity": quantity,
         "available_quantity": available,
-        "status": "low_inventory" if reorder_required else "available",
+        "status": status,
         "reorder_required": reorder_required,
+        "reason": reason,
     }

@@ -4,16 +4,31 @@ MACHINES = [
     {"id": "Machine-C", "status": "available", "materials": ["pine", "maple"]},
 ]
 
-
 def assign_machine(material: str):
     for machine in MACHINES:
-        if machine["status"] == "available" and material.lower() in machine["materials"]:
-            return {
-                "assigned_machine": machine["id"],
-                "reason": f"{machine['id']} is available and supports {material}.",
-            }
+        if material.lower() in machine["materials"]:
+            if machine["status"] == "available":
+                return {
+                    "assigned_machine": machine["id"],
+                    "reason": (
+                        f"{machine['id']} selected because it supports {material} "
+                        f"and is currently available."
+                    ),
+                }
 
     return {
         "assigned_machine": "manual_review",
-        "reason": "No available compatible machine found.",
+        "reason": (
+            f"No available machines support {material}, "
+            "so manual intervention is required."
+        ),
     }
+
+
+
+
+
+
+
+
+
